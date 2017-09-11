@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Interface;
-
+import Business.Product;
 /**
  *
  * @author yiyangyang
@@ -14,10 +14,24 @@ public class viewJPanel extends javax.swing.JPanel {
     /**
      * Creates new form viewPanel
      */
-    public viewJPanel() {
+ 
+    public viewJPanel(Product product) {
         initComponents();
+        displayProduct(product);
     }
-
+    private void displayProduct(Product product){
+         String productName = product.getName();
+         nameTextField.setText(productName);
+         
+         String productPrice = product.getPrice();
+         priceTextField.setText(productPrice);
+         
+         String productAvaiNum = product.getAvaiNum();
+         avaiNumTextField.setText(productAvaiNum);
+         
+         String productDesc = product.getDescription();
+         descTextField.setText(productDesc);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

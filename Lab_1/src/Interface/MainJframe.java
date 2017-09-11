@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Interface;
-
+import Business.Product;
 /**
  *
  * @author yiyangyang
@@ -14,8 +14,10 @@ public class MainJframe extends javax.swing.JFrame {
     /**
      * Creates new form MainJframe
      */
+    private Product product;
     public MainJframe() {
         initComponents();
+        product= new Product();
     }
 
     /**
@@ -43,6 +45,11 @@ public class MainJframe extends javax.swing.JFrame {
         });
 
         viewBtn.setText("view");
+        viewBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout controlJPanelLayout = new javax.swing.GroupLayout(controlJPanel);
         controlJPanel.setLayout(controlJPanelLayout);
@@ -52,19 +59,19 @@ public class MainJframe extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(controlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(viewBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlJPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(createBtn)))
+                    .addGroup(controlJPanelLayout.createSequentialGroup()
+                        .addComponent(createBtn)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         controlJPanelLayout.setVerticalGroup(
             controlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(controlJPanelLayout.createSequentialGroup()
-                .addGap(95, 95, 95)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlJPanelLayout.createSequentialGroup()
+                .addGap(87, 87, 87)
                 .addComponent(createBtn)
-                .addGap(48, 48, 48)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addComponent(viewBtn)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addGap(121, 121, 121))
         );
 
         splitPane.setLeftComponent(controlJPanel);
@@ -73,11 +80,11 @@ public class MainJframe extends javax.swing.JFrame {
         displayJPanel.setLayout(displayJPanelLayout);
         displayJPanelLayout.setHorizontalGroup(
             displayJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 293, Short.MAX_VALUE)
+            .addGap(0, 405, Short.MAX_VALUE)
         );
         displayJPanelLayout.setVerticalGroup(
             displayJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 285, Short.MAX_VALUE)
+            .addGap(0, 359, Short.MAX_VALUE)
         );
 
         splitPane.setRightComponent(displayJPanel);
@@ -89,7 +96,16 @@ public class MainJframe extends javax.swing.JFrame {
 
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
         // TODO add your handling code here:
+        createJPanel createPanel=new createJPanel(product);
+        splitPane.setRightComponent(createPanel);
+        
     }//GEN-LAST:event_createBtnActionPerformed
+
+    private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
+        // TODO add your handling code here:
+        viewJPanel viewPanel = new viewJPanel(product);
+        splitPane.setRightComponent(viewPanel);
+    }//GEN-LAST:event_viewBtnActionPerformed
 
     /**
      * @param args the command line arguments
