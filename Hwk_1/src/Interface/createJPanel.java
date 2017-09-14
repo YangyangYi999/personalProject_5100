@@ -890,17 +890,17 @@ public class createJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1742, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1397, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -954,6 +954,7 @@ public class createJPanel extends javax.swing.JPanel {
 
     private void phoneNumTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneNumTextFieldActionPerformed
         // TODO add your handling code here:
+     
     }//GEN-LAST:event_phoneNumTextFieldActionPerformed
 
     private void creditcardExpTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditcardExpTextFieldActionPerformed
@@ -1031,11 +1032,24 @@ public class createJPanel extends javax.swing.JPanel {
     private void firstnameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstnameTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_firstnameTextFieldActionPerformed
-
+    public static boolean isInt(String s){
+        for(int i = 0; i < s.length(); i++){
+            if(!Character.isDigit(s.charAt(i))){
+                 return false;
+            }
+        }
+        return true;
+}
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
         // TODO add your handling code here:
+        boolean isValidInteger = true;
+        if(isInt(phoneNumTextField.getText())== isValidInteger && isInt(CVVTextField.getText()) && isInt(SCreditTextField.getText())== isValidInteger && isInt(CCreditTextField.getText())){
+        JOptionPane.showMessageDialog(null,"create product successfully"); 
+        }
+        else{ JOptionPane.showMessageDialog(null, "create product successfully");
+        }
         person.setLastName(lastnameTextField.getText());
-        person.setFirstName(firstnameTextField.getText());
+        person.setFirstName(firstnameTextField.getText());       
         person.setPhoneNum(Integer.parseInt(phoneNumTextField.getText()));
         person.setEmail(emailTextField.getText());
         person.setImg(picture);
@@ -1081,9 +1095,9 @@ public class createJPanel extends javax.swing.JPanel {
         person.setSavingAccount(financot);
         
         
-         JOptionPane.showMessageDialog(null,"create product successfully"); 
+         
     }//GEN-LAST:event_createBtnActionPerformed
-
+    
     private void lastnameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastnameTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_lastnameTextFieldActionPerformed
