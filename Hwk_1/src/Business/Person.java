@@ -14,7 +14,7 @@ import java.awt.image.BufferedImage;
 public class Person {
     private String lastName;
     private String firstName;
-    private String phoneNum;
+    private int phoneNum;
     private String email;
     BufferedImage img = null;
     Address address;
@@ -22,6 +22,14 @@ public class Person {
     FinancialAccount checkingAccount;
     FinancialAccount SavingAccount;
     LicenseData licenseData;
+
+    public int getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(int phoneNum) {
+        this.phoneNum = phoneNum;
+    }
 
     public FinancialAccount getCheckingAccount() {
         return checkingAccount;
@@ -80,13 +88,7 @@ public class Person {
         this.firstName = firstName;
     }
 
-    public String getPhoneNum() {
-        return phoneNum;
-    }
 
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
-    }
 
     public String getEmail() {
         return email;

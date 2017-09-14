@@ -14,8 +14,16 @@ public class Address {
     private String addressLine;
     private String state;
     private String city;
-    private String zipcode;
+    private int zipcode;
     private String Country;
+
+    public int getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(int zipcode) {
+        this.zipcode = zipcode;
+    }
  
     
     public String getAddressLine() {
@@ -42,13 +50,7 @@ public class Address {
         this.city = city;
     }
 
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
+    
 
     public String getCountry() {
         return Country;

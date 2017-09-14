@@ -13,26 +13,24 @@ public class FinancialAccount {
     private String accountNum;
     private String creationDate;
     private String status;
-    private String debt;
-    private String credit;
+    private String debtCredit;
+    private int balance ;
 
-    public String getDebt() {
-        return debt;
+    public String getDebtCredit() {
+        return debtCredit;
     }
 
-    public void setDebt(String debt) {
-        this.debt = debt;
+    public void setDebtCredit(String debtCredit) {
+        this.debtCredit = debtCredit;
     }
 
-    public String getCredit() {
-        return credit;
+    public int getBalance() {
+        return balance;
     }
 
-    public void setCredit(String credit) {
-        this.credit = credit;
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
-
-    
 
     public String getAccountNum() {
         return accountNum;

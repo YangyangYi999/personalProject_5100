@@ -13,7 +13,7 @@ public class Creditcard {
     private String bankName;
     private String cardHolders;
     private String expireDate;
-    private String CVVNum;
+    private int CVVNum;
 
 
     public String getAccountNum() {
@@ -48,13 +48,14 @@ public class Creditcard {
         this.expireDate = expireDate;
     }
 
-    public String getCVVNum() {
+    public int getCVVNum() {
         return CVVNum;
     }
 
-    public void setCVVNum(String CVVNum) {
+    public void setCVVNum(int CVVNum) {
         this.CVVNum = CVVNum;
     }
+
 
 
 }

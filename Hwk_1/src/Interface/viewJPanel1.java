@@ -33,8 +33,8 @@ private void displayProfile(Person person){
         String pEmail = person.getEmail();
         emailTextField.setText(pEmail);
          
-        String pPhonenum = person.getPhoneNum();
-        phoneNumTextField.setText(pPhonenum);
+        int pPhonenum = person.getPhoneNum();
+        phoneNumTextField.setText(String.valueOf(pPhonenum));
          
         BufferedImage Pimg = person.getImg();
         pictureLable.setIcon(new ImageIcon(Pimg));
@@ -48,8 +48,8 @@ private void displayProfile(Person person){
         String pcity = person.getAddress().getCity();
         cityTextField.setText(pcity);   
         
-        String pzipcode = person.getAddress().getZipcode();
-        zipcodeTextField.setText(pzipcode);
+        int pzipcode = person.getAddress().getZipcode();
+        zipcodeTextField.setText(String.valueOf(pzipcode));
         
         String pcountry = person.getAddress().getCountry();
         countryTextField.setText(pcountry);
@@ -66,8 +66,8 @@ private void displayProfile(Person person){
         String pExpireDate = person.getCreditCard().getExpireDate();
         creditcardExpTextField.setText(pExpireDate);
         
-        String pCVVNum = person.getCreditCard().getCVVNum();
-        CVVTextField.setText(pCVVNum);
+        int pCVVNum = person.getCreditCard().getCVVNum();
+        CVVTextField.setText(String.valueOf(pCVVNum));
         //license data
         String pNumber = person.getLicenseData().getNumber();
         licenseNumTextField.setText(pNumber);
@@ -93,11 +93,11 @@ private void displayProfile(Person person){
         String pCCreationDate = person.getCheckingAccount().getCreationDate();
         CcreationDateTextField.setText(pCCreationDate);
         
-        String pCDebt = person.getCheckingAccount().getDebt();
+        String pCDebt = person.getCheckingAccount().getDebtCredit();
         CDebtTextField.setText(pCDebt);
         
-        String pCCredit = person.getCheckingAccount().getCredit();
-        CCreditTextField.setText(pCCredit);
+        int pCBalance = person.getCheckingAccount().getBalance();
+        CCreditTextField.setText(String.valueOf(pCBalance));
         
         // Saving account
         String pSaccountNum = person.getSavingAccount().getAccountNum();
@@ -109,11 +109,11 @@ private void displayProfile(Person person){
         String pSCreationDate = person.getSavingAccount().getCreationDate();
         ScreationDateTextField.setText(pSCreationDate);
         
-        String pSDebt = person.getSavingAccount().getDebt();
+        String pSDebt = person.getSavingAccount().getDebtCredit();
         SDebtTextField.setText(pSDebt);
         
-        String pSCredit = person.getSavingAccount().getCredit();
-        SCreditTextField.setText(pSCredit);
+        int pSBalance = person.getSavingAccount().getBalance();
+        SCreditTextField.setText(String.valueOf(pSBalance));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -310,9 +310,9 @@ private void displayProfile(Person person){
 
         jLabel52.setText("Status:");
 
-        jLabel53.setText("Debt:");
+        jLabel53.setText("Debt and Credit:");
 
-        jLabel54.setText("Credit:");
+        jLabel54.setText("Balance:");
 
         stateTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -413,7 +413,7 @@ private void displayProfile(Person person){
             }
         });
 
-        jLabel36.setText("Debt:");
+        jLabel36.setText("Debt and Credit:");
 
         emailTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -421,7 +421,7 @@ private void displayProfile(Person person){
             }
         });
 
-        jLabel37.setText("Credit:");
+        jLabel37.setText("Balance:");
 
         CCreditTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -499,11 +499,11 @@ private void displayProfile(Person person){
                                 .addGap(22, 22, 22)
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
-                                .addComponent(pictureLable, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(pictureLable, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 107, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -607,7 +607,7 @@ private void displayProfile(Person person){
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(203, 203, 203)
                         .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(207, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -741,7 +741,7 @@ private void displayProfile(Person person){
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(CCreditTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addGap(21, 21, 21)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel44)
@@ -775,16 +775,16 @@ private void displayProfile(Person person){
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1246, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1237, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
