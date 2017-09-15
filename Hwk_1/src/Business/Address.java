@@ -11,21 +11,18 @@ package Business;
  */
 
 public class Address {
-    private String addressLine;
+    private String addressLine ;
     private String state;
     private String city;
     private int zipcode;
-    private String Country;
-
+    private String Country;      
     public int getZipcode() {
         return zipcode;
     }
-
     public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
     }
- 
-    
+     
     public String getAddressLine() {
         return addressLine;
     }
@@ -49,8 +46,6 @@ public class Address {
     public void setCity(String city) {
         this.city = city;
     }
-
-    
 
     public String getCountry() {
         return Country;

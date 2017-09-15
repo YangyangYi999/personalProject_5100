@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -29,6 +30,8 @@ public class createJPanel extends javax.swing.JPanel {
     private FinancialAccount financot1;
     private FinancialAccount financot;
     BufferedImage picture = null;
+    ButtonGroup group = new ButtonGroup();
+    ButtonGroup group1 = new ButtonGroup();
 
     /**
      * Creates new form createJPanel
@@ -36,7 +39,12 @@ public class createJPanel extends javax.swing.JPanel {
     public createJPanel(Person person) {
         initComponents();
         this.person = person;
-
+        group.add(AjRadioButton);
+        group.add(NAjRadioButton);
+        AjRadioButton.setSelected(true);
+        group1.add(maleRadioButton);
+        group1.add(femaleRadioButton);
+        maleRadioButton.setSelected(true);
     }
 
     /**
@@ -124,7 +132,6 @@ public class createJPanel extends javax.swing.JPanel {
         CaccountNumTextField = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel33 = new javax.swing.JLabel();
-        genderTextField = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
         pictureLable = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
@@ -143,7 +150,6 @@ public class createJPanel extends javax.swing.JPanel {
         CCreditTextField = new javax.swing.JTextField();
         CDebtTextField = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        CStatusTextField = new javax.swing.JTextField();
         accountNumTextField = new javax.swing.JTextField();
         CcreationDateTextField = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -153,6 +159,10 @@ public class createJPanel extends javax.swing.JPanel {
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
+        AjRadioButton = new javax.swing.JRadioButton();
+        NAjRadioButton = new javax.swing.JRadioButton();
+        maleRadioButton = new javax.swing.JRadioButton();
+        femaleRadioButton = new javax.swing.JRadioButton();
 
         jLabel26.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel26.setText("License");
@@ -408,12 +418,6 @@ public class createJPanel extends javax.swing.JPanel {
 
         jLabel33.setText("Account Number:");
 
-        genderTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                genderTextFieldActionPerformed(evt);
-            }
-        });
-
         jLabel34.setText("Creation Date:");
 
         pictureLable.setToolTipText("");
@@ -485,12 +489,6 @@ public class createJPanel extends javax.swing.JPanel {
         jLabel14.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel14.setText("Credit Card ");
 
-        CStatusTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CStatusTextFieldActionPerformed(evt);
-            }
-        });
-
         accountNumTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 accountNumTextFieldActionPerformed(evt);
@@ -537,6 +535,24 @@ public class createJPanel extends javax.swing.JPanel {
         jLabel49.setForeground(new java.awt.Color(51, 51, 51));
         jLabel49.setText("Balance must be number.");
 
+        AjRadioButton.setText("Active");
+        AjRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AjRadioButtonActionPerformed(evt);
+            }
+        });
+
+        NAjRadioButton.setText("Not Active");
+
+        maleRadioButton.setText("male");
+        maleRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maleRadioButtonActionPerformed(evt);
+            }
+        });
+
+        femaleRadioButton.setText("female");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -582,15 +598,12 @@ public class createJPanel extends javax.swing.JPanel {
                                 .addGap(197, 197, 197))
                             .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(22, 22, 22)
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(pictureLable, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(95, 95, 95)
-                                        .addComponent(uploadImg)))
+                                    .addComponent(uploadImg)
+                                    .addComponent(pictureLable, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -604,12 +617,16 @@ public class createJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel23)
                             .addComponent(jLabel24))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(licenseClassTextField)
-                            .addComponent(licenseNumTextField)
-                            .addComponent(licenseExpTextField)
-                            .addComponent(genderTextField)
-                            .addComponent(DOBTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(licenseClassTextField)
+                                .addComponent(licenseNumTextField)
+                                .addComponent(licenseExpTextField)
+                                .addComponent(DOBTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(maleRadioButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(femaleRadioButton))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(227, 227, 227)
                         .addComponent(jLabel20))
@@ -649,14 +666,19 @@ public class createJPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel37)
                                     .addComponent(jLabel36))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(CaccountNumTextField)
-                                    .addComponent(CcreationDateTextField)
-                                    .addComponent(CStatusTextField)
-                                    .addComponent(CDebtTextField)
-                                    .addComponent(CCreditTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel48))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(CaccountNumTextField)
+                                            .addComponent(CcreationDateTextField)
+                                            .addComponent(CDebtTextField)
+                                            .addComponent(CCreditTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel48))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(AjRadioButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(NAjRadioButton))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -683,7 +705,7 @@ public class createJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(176, 176, 176)
                         .addComponent(jLabel1)))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -724,40 +746,36 @@ public class createJPanel extends javax.swing.JPanel {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(jLabel7)
+                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jLabel6)
-                        .addGap(157, 157, 157))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(lastnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(firstnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(phoneNumTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel45))
-                            .addComponent(pictureLable, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                        .addComponent(uploadImg)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel2)
+                                .addComponent(lastnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(firstnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(phoneNumTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel45))
+                    .addComponent(pictureLable, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(uploadImg)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
-                .addGap(22, 22, 22)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(addresslineTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -817,8 +835,9 @@ public class createJPanel extends javax.swing.JPanel {
                     .addComponent(licenseExpTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(genderTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel25))
+                    .addComponent(jLabel25)
+                    .addComponent(maleRadioButton)
+                    .addComponent(femaleRadioButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
@@ -841,8 +860,9 @@ public class createJPanel extends javax.swing.JPanel {
                     .addComponent(CcreationDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CStatusTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel35))
+                    .addComponent(jLabel35)
+                    .addComponent(AjRadioButton)
+                    .addComponent(NAjRadioButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CDebtTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -890,17 +910,17 @@ public class createJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1397, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1605, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -944,116 +964,73 @@ public class createJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cityTextField5ActionPerformed
 
-    private void bankNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bankNameTextFieldActionPerformed
+    private void AjRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjRadioButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bankNameTextFieldActionPerformed
+        
+    }//GEN-LAST:event_AjRadioButtonActionPerformed
 
-    private void cardHolderTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cardHolderTextFieldActionPerformed
+    private void uploadImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadImgActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cardHolderTextFieldActionPerformed
+        JFileChooser filechooser= new JFileChooser();
+        filechooser.setDialogTitle("Choose Your File");
+        filechooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        //below codes for select  the file
+        int returnval=filechooser.showOpenDialog(this);
+        if(returnval==JFileChooser.APPROVE_OPTION)
+        {
+            File file = filechooser.getSelectedFile();
 
-    private void phoneNumTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneNumTextFieldActionPerformed
-        // TODO add your handling code here:
-     
-    }//GEN-LAST:event_phoneNumTextFieldActionPerformed
-
-    private void creditcardExpTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditcardExpTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_creditcardExpTextFieldActionPerformed
-
-    private void CVVTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CVVTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CVVTextFieldActionPerformed
-
-    private void addresslineTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addresslineTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addresslineTextFieldActionPerformed
-
-    private void DOBTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DOBTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DOBTextFieldActionPerformed
-
-    private void SaccountNumTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaccountNumTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SaccountNumTextFieldActionPerformed
-
-    private void countryTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countryTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_countryTextFieldActionPerformed
-
-    private void licenseNumTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_licenseNumTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_licenseNumTextFieldActionPerformed
-
-    private void stateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stateTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stateTextFieldActionPerformed
-
-    private void zipcodeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zipcodeTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_zipcodeTextFieldActionPerformed
-
-    private void SCreditTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SCreditTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SCreditTextFieldActionPerformed
-
-    private void cityTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cityTextFieldActionPerformed
-
-    private void SDebtTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDebtTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDebtTextFieldActionPerformed
-
-    private void licenseExpTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_licenseExpTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_licenseExpTextFieldActionPerformed
-
-    private void CaccountNumTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaccountNumTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CaccountNumTextFieldActionPerformed
-
-    private void genderTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_genderTextFieldActionPerformed
-
-    private void SStatusTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SStatusTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SStatusTextFieldActionPerformed
-
-    private void ScreationDateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ScreationDateTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ScreationDateTextFieldActionPerformed
-
-    private void licenseClassTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_licenseClassTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_licenseClassTextFieldActionPerformed
-
-    private void firstnameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstnameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_firstnameTextFieldActionPerformed
-    public static boolean isInt(String s){
-        for(int i = 0; i < s.length(); i++){
-            if(!Character.isDigit(s.charAt(i))){
-                 return false;
+            try
+            {   //display the image in jlabel
+                picture=ImageIO.read(file);
+                pictureLable.setIcon(new ImageIcon(picture));
             }
+            catch(IOException e)
+            {
+
+            }
+            this.person.setImg(picture);
         }
-        return true;
-}
+    }//GEN-LAST:event_uploadImgActionPerformed
+
+    private void CcreationDateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CcreationDateTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CcreationDateTextFieldActionPerformed
+
+    private void accountNumTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountNumTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_accountNumTextFieldActionPerformed
+
+    private void CDebtTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CDebtTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CDebtTextFieldActionPerformed
+
+    private void CCreditTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CCreditTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CCreditTextFieldActionPerformed
+
+    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailTextFieldActionPerformed
+
+    private void lastnameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastnameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lastnameTextFieldActionPerformed
+
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
         // TODO add your handling code here:
         boolean isValidInteger = true;
         if(isInt(phoneNumTextField.getText())== isValidInteger && isInt(CVVTextField.getText()) && isInt(SCreditTextField.getText())== isValidInteger && isInt(CCreditTextField.getText())){
-        JOptionPane.showMessageDialog(null,"create product successfully"); 
+            JOptionPane.showMessageDialog(null,"create product successfully");
         }
         else{ JOptionPane.showMessageDialog(null, "create product successfully");
         }
         person.setLastName(lastnameTextField.getText());
-        person.setFirstName(firstnameTextField.getText());       
+        person.setFirstName(firstnameTextField.getText());
         person.setPhoneNum(Integer.parseInt(phoneNumTextField.getText()));
         person.setEmail(emailTextField.getText());
         person.setImg(picture);
-        
+
         address = new Address();
         address.setAddressLine(addresslineTextField.getText());
         address.setState(stateTextField.getText());
@@ -1061,7 +1038,7 @@ public class createJPanel extends javax.swing.JPanel {
         address.setCountry(countryTextField.getText());
         address.setZipcode(Integer.parseInt(zipcodeTextField.getText()));
         person.setAddress(address);
-       
+
         creditcard = new Creditcard();
         creditcard.setAccountNum(accountNumTextField.getText());
         creditcard.setBankName(bankNameTextField.getText());
@@ -1069,23 +1046,40 @@ public class createJPanel extends javax.swing.JPanel {
         creditcard.setExpireDate(creditcardExpTextField.getText());
         creditcard.setCVVNum(Integer.parseInt(CVVTextField.getText()));
         person.setCreditCard(creditcard);
-        
+
         lidata = new LicenseData();
         lidata.setNumber(licenseNumTextField.getText());
-        lidata.setSex(genderTextField.getText());
+        Boolean isClick = true;
+        if (maleRadioButton.isSelected() == isClick && femaleRadioButton.isSelected() != isClick)
+        {
+           lidata.setSex(maleRadioButton.getText());
+        }
+        else if(femaleRadioButton.isSelected()== isClick && maleRadioButton.isSelected() != isClick)
+        {
+            financot1.setStatus(femaleRadioButton.getText());
+        }
+        
         lidata.setExp(licenseExpTextField.getText());
         lidata.setDOB(DOBTextField.getText());
         lidata.setLicenseClass(licenseClassTextField.getText());
         person.setLicenseData(lidata);
-        
+
         financot1 = new FinancialAccount();
         financot1.setAccountNum(CaccountNumTextField.getText());
-        financot1.setStatus(CStatusTextField.getText());
+        Boolean isActive = true;
+        if (AjRadioButton.isSelected() == isActive && NAjRadioButton.isSelected() != isActive)
+        {
+            financot1.setStatus(AjRadioButton.getText());
+        }
+        else if(NAjRadioButton.isSelected()== isActive && AjRadioButton.isSelected() != isActive)
+        {
+            financot1.setStatus(NAjRadioButton.getText());
+        }
         financot1.setCreationDate(CcreationDateTextField.getText());
         financot1.setDebtCredit(CDebtTextField.getText());
         financot1.setBalance(Integer.parseInt(CCreditTextField.getText()));
         person.setCheckingAccount(financot1);
-        
+
         financot = new FinancialAccount();
         financot.setAccountNum(SaccountNumTextField.getText());
         financot.setStatus(SStatusTextField.getText());
@@ -1093,73 +1087,116 @@ public class createJPanel extends javax.swing.JPanel {
         financot.setDebtCredit(SDebtTextField.getText());
         financot.setBalance(Integer.parseInt(SCreditTextField.getText()));
         person.setSavingAccount(financot);
-        
-        
-         
+
     }//GEN-LAST:event_createBtnActionPerformed
-    
-    private void lastnameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastnameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lastnameTextFieldActionPerformed
 
-    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
+    private void firstnameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstnameTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_emailTextFieldActionPerformed
+    }//GEN-LAST:event_firstnameTextFieldActionPerformed
 
-    private void CCreditTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CCreditTextFieldActionPerformed
+    private void licenseClassTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_licenseClassTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CCreditTextFieldActionPerformed
+    }//GEN-LAST:event_licenseClassTextFieldActionPerformed
 
-    private void CDebtTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CDebtTextFieldActionPerformed
+    private void ScreationDateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ScreationDateTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CDebtTextFieldActionPerformed
+    }//GEN-LAST:event_ScreationDateTextFieldActionPerformed
 
-    private void CStatusTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CStatusTextFieldActionPerformed
+    private void SStatusTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SStatusTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CStatusTextFieldActionPerformed
+    }//GEN-LAST:event_SStatusTextFieldActionPerformed
 
-    private void accountNumTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountNumTextFieldActionPerformed
+    private void CaccountNumTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaccountNumTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_accountNumTextFieldActionPerformed
+    }//GEN-LAST:event_CaccountNumTextFieldActionPerformed
 
-    private void CcreationDateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CcreationDateTextFieldActionPerformed
+    private void licenseExpTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_licenseExpTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CcreationDateTextFieldActionPerformed
+    }//GEN-LAST:event_licenseExpTextFieldActionPerformed
 
-    private void uploadImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadImgActionPerformed
+    private void SDebtTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDebtTextFieldActionPerformed
         // TODO add your handling code here:
-        JFileChooser filechooser= new JFileChooser();
-    filechooser.setDialogTitle("Choose Your File");
-    filechooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-    //below codes for select  the file 
-    int returnval=filechooser.showOpenDialog(this);
-    if(returnval==JFileChooser.APPROVE_OPTION)
-    {
-        File file = filechooser.getSelectedFile();
-        
-        try
-        {   //display the image in jlabel
-            picture=ImageIO.read(file);
-            pictureLable.setIcon(new ImageIcon(picture));
+    }//GEN-LAST:event_SDebtTextFieldActionPerformed
+
+    private void cityTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cityTextFieldActionPerformed
+
+    private void SCreditTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SCreditTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SCreditTextFieldActionPerformed
+
+    private void zipcodeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zipcodeTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_zipcodeTextFieldActionPerformed
+
+    private void stateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stateTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stateTextFieldActionPerformed
+
+    private void licenseNumTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_licenseNumTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_licenseNumTextFieldActionPerformed
+
+    private void countryTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countryTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_countryTextFieldActionPerformed
+
+    private void SaccountNumTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaccountNumTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SaccountNumTextFieldActionPerformed
+
+    private void DOBTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DOBTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DOBTextFieldActionPerformed
+
+    private void addresslineTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addresslineTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addresslineTextFieldActionPerformed
+
+    private void CVVTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CVVTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CVVTextFieldActionPerformed
+
+    private void creditcardExpTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditcardExpTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_creditcardExpTextFieldActionPerformed
+
+    private void phoneNumTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneNumTextFieldActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_phoneNumTextFieldActionPerformed
+
+    private void cardHolderTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cardHolderTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cardHolderTextFieldActionPerformed
+
+    private void bankNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bankNameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bankNameTextFieldActionPerformed
+
+    private void maleRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleRadioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_maleRadioButtonActionPerformed
+    public static boolean isInt(String s){
+        for(int i = 0; i < s.length(); i++){
+            if(!Character.isDigit(s.charAt(i))){
+                 return false;
+            }
         }
-        catch(IOException e)
-        {
-
-        }
-        this.person.setImg(picture);
-    }
-    }//GEN-LAST:event_uploadImgActionPerformed
-                                            
+        return true;
+}                                                
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton AjRadioButton;
     private javax.swing.JTextField CCreditTextField;
     private javax.swing.JTextField CDebtTextField;
-    private javax.swing.JTextField CStatusTextField;
     private javax.swing.JTextField CVVTextField;
     private javax.swing.JTextField CaccountNumTextField;
     private javax.swing.JTextField CcreationDateTextField;
     private javax.swing.JTextField DOBTextField;
+    private javax.swing.JRadioButton NAjRadioButton;
     private javax.swing.JTextField SCreditTextField;
     private javax.swing.JTextField SDebtTextField;
     private javax.swing.JTextField SStatusTextField;
@@ -1180,8 +1217,8 @@ public class createJPanel extends javax.swing.JPanel {
     private javax.swing.JButton createBtn;
     private javax.swing.JTextField creditcardExpTextField;
     private javax.swing.JTextField emailTextField;
+    private javax.swing.JRadioButton femaleRadioButton;
     private javax.swing.JTextField firstnameTextField;
-    private javax.swing.JTextField genderTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1249,6 +1286,7 @@ public class createJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField licenseClassTextField;
     private javax.swing.JTextField licenseExpTextField;
     private javax.swing.JTextField licenseNumTextField;
+    private javax.swing.JRadioButton maleRadioButton;
     private javax.swing.JTextField phoneNumTextField;
     private javax.swing.JLabel pictureLable;
     private javax.swing.JTextField stateTextField;

@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage;
  * @author yiyangyang
  */
 public class Person {
-    private String lastName;
+    private String lastName ;
     private String firstName;
     private int phoneNum;
     private String email;
