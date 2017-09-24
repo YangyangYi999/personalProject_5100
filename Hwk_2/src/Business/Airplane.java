@@ -1,0 +1,118 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Business;
+
+import java.util.Date;
+
+/**
+ *
+ * @author yiyangyang
+ */
+public class Airplane {
+    private int year;
+    private int seats;
+    private int modelNum;
+    private int serialNum;
+    private String status;
+    private String manufacturer;
+    private String airport;
+    private String certificate;
+    private String airLinerstart;
+    private String airLinerend;
+    
+
+    
+
+    public String getAirLinerstart() {
+        return airLinerstart;
+    }
+
+    public void setAirLinerstart(String airLinerstart) {
+        this.airLinerstart = airLinerstart;
+    }
+
+    public String getAirLinerend() {
+        return airLinerend;
+    }
+
+    public void setAirLinerend(String airLinerend) {
+        this.airLinerend = airLinerend;
+    }
+
+   
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getSeats() {
+        return seats;
+    }
+
+    public void setSeats(int seats) {
+        this.seats = seats;
+    }
+
+    public int getModelNum() {
+        return modelNum;
+    }
+
+    public void setModelNum(int modelNum) {
+        this.modelNum = modelNum;
+    }
+
+    public int getSerialNum() {
+        return serialNum;
+    }
+
+    public void setSerialNum(int serialNum) {
+        this.serialNum = serialNum;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getCertificate() {
+        return certificate;
+    }
+
+    public void setCertificate(String certificate) {
+        this.certificate = certificate;
+    }
+
+
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public String getAirport() {
+        return airport;
+    }
+
+    public void setAirport(String airport) {
+        this.airport = airport;
+    }
+
+    public String toString(){
+        return manufacturer;
+    }
+    
+
+}
