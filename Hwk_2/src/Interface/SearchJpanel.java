@@ -34,7 +34,8 @@ public class SearchJpanel extends javax.swing.JPanel {
         public void populateTable(){
         DefaultTableModel dtm = (DefaultTableModel)BairplaneTable.getModel();
         dtm.setRowCount(0); 
-        
+        int i =0;
+        int size = ah.getAirplaneHistory().size();
         for(Airplane vs: ah.getAirplaneHistory())
            
         {
@@ -52,30 +53,18 @@ public class SearchJpanel extends javax.swing.JPanel {
             row[7] = vs.getStatus();
             
             dtm.addRow(row);}
+            
+            else{
+                i++;
+            }
         }
+        if (i==size){JOptionPane.showMessageDialog(null, "No matches airplane");}
     }
         
         
        
         
-//        public void populateTable2(Airplane vs){
-//        DefaultTableModel dtm = (DefaultTableModel)seatsTable.getModel();
-//        dtm.setRowCount(0); 
-//
-//            Object row[] = new Object[8];
-//            
-//            row[0] = vs.getSerialNum();
-//            row[1] = vs.getModelNum();
-//            row[2] = vs.getAirLiner();
-//            row[3] = vs.getAirport();
-//            row[4] = vs;
-//            row[5] = vs.getSeats(); 
-//            row[6] = vs.getYear();
-//            row[7] = vs.getStatus();
-//            
-//            dtm.addRow(row);
-//        
-//    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1105,18 +1094,14 @@ public class SearchJpanel extends javax.swing.JPanel {
     }//GEN-LAST:event_seatsYtxtActionPerformed
 
     private void searchBtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn5ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:    
         boolean isSeats = true;
+        
         if(isInt(SeatsXtxt.getText()) == isSeats && isInt(seatsYtxt.getText())){
-            int Minseats = Integer.parseInt(SeatsXtxt.getText());
-            int Maxseats = Integer.parseInt(seatsYtxt.getText());
-
-            if(!ah.getAirplaneHistory().isEmpty())
-            {
-                populateTable2(Minseats,Maxseats);
-            }
-       
-        }
+                int Minseats = Integer.parseInt(SeatsXtxt.getText());
+                int Maxseats = Integer.parseInt(seatsYtxt.getText());
+                    populateTable2(Minseats,Maxseats);}
+               
         else
         {
             JOptionPane.showMessageDialog(null,"Please input numbers only");
@@ -1126,13 +1111,7 @@ public class SearchJpanel extends javax.swing.JPanel {
     private void searchBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn4ActionPerformed
         // TODO add your handling code here:
 
-        if(!ah.getAirplaneHistory().isEmpty()){
-            populateTable1();
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"No matches airplane now");
-        }
+            populateTable1();    
 
     }//GEN-LAST:event_searchBtn4ActionPerformed
 
@@ -1199,14 +1178,27 @@ public class SearchJpanel extends javax.swing.JPanel {
     private void Searchtab6BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Searchtab6BtnActionPerformed
         // TODO add your handling code here:
         boolean isSenum = true;
+        int i = 0;
+        int size = ah.getAirplaneHistory().size();
         if(isInt(iModelNumTxt.getText()) == isSenum ){
-            
-            if(!ah.getAirplaneHistory().isEmpty())
+            for(Airplane vs: ah.getAirplaneHistory())
             {
-                populateTable3();
+                if(!ah.getAirplaneHistory().isEmpty())
+                {
+                    populateTable3(vs);
+                    if(modelNumTable.getModel().getRowCount()==0)
+                    {
+                        i++;
+                    }
+                }
             }
-
-        }
+                
+                while(i == size){
+                    JOptionPane.showMessageDialog(null,"No matches airplane now");
+                    break;
+                }
+            }
+        
         else
         {
             JOptionPane.showMessageDialog(null,"Please input numbers only");
@@ -1221,11 +1213,11 @@ public class SearchJpanel extends javax.swing.JPanel {
             {
                 populateTable4();
             }
-            else if(manuTable != null && manuTable.getModel() == null)
+            else if(manuTable.getModel().getRowCount()==0)
             {
                 JOptionPane.showMessageDialog(null,"No matches manufacturer now");
             }
-            else{JOptionPane.showMessageDialog(null,"No matches manufacturer now");}
+           
     
         
     }//GEN-LAST:event_Searchtab7BtnActionPerformed
@@ -1259,7 +1251,8 @@ public class SearchJpanel extends javax.swing.JPanel {
     public void populatecertificateTable(){
         DefaultTableModel dtm = (DefaultTableModel)certificateTable.getModel();
         dtm.setRowCount(0); 
-        
+        int i =0;
+        int size =ah.getAirplaneHistory().size();
             for(Airplane vs: ah.getAirplaneHistory())
             {
                 if("Expired".equals(vs.getCertificate())){
@@ -1274,14 +1267,19 @@ public class SearchJpanel extends javax.swing.JPanel {
                     row[7] = vs.getStatus();
                     dtm.addRow(row);                
                 }
+                else{i++;}
             
             }
+            if(i==size){ 
+                JOptionPane.showMessageDialog(null,"No matches airplane now");
+                }
     }  
      
     public void populateairportTable(){
         DefaultTableModel dtm = (DefaultTableModel)airportTable.getModel();
         dtm.setRowCount(0); 
-        
+        int i =0;
+        int size =ah.getAirplaneHistory().size();
             for(Airplane vs: ah.getAirplaneHistory())
             {
                 if("Available".equals(vs.getStatus()) && iAirportTxt.getText().equals(vs.getAirport())){
@@ -1299,13 +1297,21 @@ public class SearchJpanel extends javax.swing.JPanel {
                     dtm.addRow(row);
                 
                 }
+                 else{i++;}
             
+            }
+            while(i==size){ 
+                JOptionPane.showMessageDialog(null,"No matches airplane now");
+                break;
             }
     }  
     public void populateTable1(){
         DefaultTableModel dtm = (DefaultTableModel)yearTable.getModel();
         dtm.setRowCount(0); 
-        
+        boolean isValid= true;
+        int i = 0;
+        int size =ah.getAirplaneHistory().size();
+        if(isInt(tab3yeartxt.getText())==isValid){
             for(Airplane vs: ah.getAirplaneHistory())
             {
                 if(tab3yeartxt.getText().equals(String.valueOf(vs.getYear()))){
@@ -1323,8 +1329,14 @@ public class SearchJpanel extends javax.swing.JPanel {
                     dtm.addRow(row);
                 
                 }
+                else{i++;}
             
             }
+            if(i==size){ 
+                JOptionPane.showMessageDialog(null,"No matches airplane now");
+            }
+        }
+        else{JOptionPane.showMessageDialog(null,"Please input numbers only");}
     }  
     
     public void populateTable4(){
@@ -1347,11 +1359,11 @@ public class SearchJpanel extends javax.swing.JPanel {
 public void populateTable2(int Minseats, int Maxseats){
         DefaultTableModel dtm = (DefaultTableModel)seatsTable.getModel();
         dtm.setRowCount(0); 
-
-         for(Airplane vs: ah.getAirplaneHistory())
-            {
+        int i = 0;
+        int size = ah.getAirplaneHistory().size();
+         
+        for(Airplane vs: ah.getAirplaneHistory()){
                 if(Minseats <= vs.getSeats() && vs.getSeats()< Maxseats && "Available".equals(vs.getStatus())){
-
                     Object row[] = new Object[8];
 
                     row[0] = vs.getSerialNum();
@@ -1365,8 +1377,14 @@ public void populateTable2(int Minseats, int Maxseats){
                     dtm.addRow(row);
                     break;
                 }
-            }
-    }    
+                else{i++;}
+        }
+        
+        if(i == size){
+            JOptionPane.showMessageDialog(null,"No matches airplane now");
+        }
+            
+}    
     
     public static boolean isInt(String s){
         for(int i = 0; i < s.length(); i++){
@@ -1377,12 +1395,9 @@ public void populateTable2(int Minseats, int Maxseats){
         return true;
     }                           
 
-    public void populateTable3(){
+    public void populateTable3(Airplane vs){
         DefaultTableModel dtm = (DefaultTableModel)modelNumTable.getModel();
         dtm.setRowCount(0); 
-        
-            for(Airplane vs: ah.getAirplaneHistory())
-            {
                 if(iModelNumTxt.getText().equals(String.valueOf(vs.getModelNum()))){
                     Object row[] = new Object[8];
 
@@ -1400,7 +1415,7 @@ public void populateTable2(int Minseats, int Maxseats){
                 }
             }
             
-        }
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AnumBtn;
     private javax.swing.JTextField AvaiNumTxt7;

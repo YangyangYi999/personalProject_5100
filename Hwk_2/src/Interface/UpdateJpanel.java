@@ -7,6 +7,7 @@ package Interface;
 
 import Business.Airplane;
 import Business.AirplaneHistory;
+import static Interface.createJpanel.isInt;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -379,7 +380,7 @@ public class UpdateJpanel extends javax.swing.JPanel {
         
       if (selectedRow >= 0){
            Airplane vs = (Airplane) airplaneTable.getValueAt(selectedRow,0);
-            
+        if(isInt(modelNumTxt.getText())&&isInt(serialNumTxt.getText())&&isInt(yearTxt.getText())&&isInt(seatsNumTxt.getText())){
             int modelNum = Integer.parseInt(modelNumTxt.getText());
             int serialNum = Integer.parseInt(serialNumTxt.getText());
             int year = Integer.parseInt(yearTxt.getText());
@@ -426,6 +427,8 @@ public class UpdateJpanel extends javax.swing.JPanel {
                 Date date = new Date(currentTime);
                 ah.setDate(date);
                  
+      }
+        else{JOptionPane.showMessageDialog(null,"Please input only numbers in field of Year, Serial Number, Model Number and Number of seats.");}
       }
         else{
                 JOptionPane.showMessageDialog(null,"Airplane updated failed, Please select any row");

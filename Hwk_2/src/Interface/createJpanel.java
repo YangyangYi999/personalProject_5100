@@ -228,9 +228,18 @@ public class createJpanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+ public static boolean isInt(String s){
+        for(int i = 0; i < s.length(); i++){
+            if(!Character.isDigit(s.charAt(i))){
+                 return false;
+            }
+        }
+        return true;
+    }                           
 
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
         // TODO add your handling code here:
+        if(isInt(modelNumTxt.getText())&&isInt(serialNumTxt.getText())&&isInt(yearTxt.getText())&&isInt(seatsNumTxt.getText())){
         int modelNum = Integer.parseInt(modelNumTxt.getText());
         int serialNum = Integer.parseInt(serialNumTxt.getText());
         int year = Integer.parseInt(yearTxt.getText());
@@ -286,7 +295,9 @@ public class createJpanel extends javax.swing.JPanel {
         manuTxt.setText("");
         yearTxt.setText("");
         AvailableRadioButton.setSelected(true);
-        ExpiredRadioButton.setSelected(true);
+        ExpiredRadioButton.setSelected(true);}
+        
+        else{JOptionPane.showMessageDialog(null,"Please input only numbers in field of Year, Serial Number, Model Number and Number of seats.");}
     }//GEN-LAST:event_createBtnActionPerformed
 
 
