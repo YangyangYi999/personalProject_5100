@@ -34,7 +34,7 @@ public class TravelAgency {
 		MasterScheduel ms = new MasterScheduel();
 
 		String dir = System.getProperty("user.dir")+"/src"; // get absolute path of current directory
-                System.out.println(dir);
+  
 		String airlinersFile = dir + "/Business/Airliners.csv";
 		String customersFile = dir + "/Business/CustomerDirectory.csv";
 		String fleetFile = dir + "/Business/Fleet.csv";
@@ -165,12 +165,31 @@ public class TravelAgency {
 		
 		
 		TravelAgency ta = new TravelAgency(airliners, cd, ms);
-		
+                int totalOfALLairliner = 0;
+                for (Airliner airliner : ta.getAirliners().getAirliners()) {
+			// print it
+			 totalOfALLairliner += airliner.getFlightSchedule().getSumOfPrice();
+                         
+		}
+		System.out.println("sum of price pf all airliner :\t" + totalOfALLairliner);
+                
 		for (Airliner airliner : ta.getAirliners().getAirliners()) {
 			// print it
-			int total = airliner.getFlightSchedule().getSumOfPrice();
-			System.out.println("sum of price for airliner " + airliner.getNameOfcompany() + ":\t" + total);
+			int totalOfpairliner = airliner.getFlightSchedule().getSumOfPrice();
+			System.out.println("sum of price per airliner " + airliner.getNameOfcompany() + ":\t" + totalOfpairliner);
 		}
+                
+                for (Airliner airliner : ta.getAirliners().getAirliners()) {
+                    
+                        for(Flight flight : airliner.getFlightSchedule().getFlightSchedule()){
+                            int totalOfpFlight = flight.getSumOfPrice();
+                        
+                            System.out.println("sum of price per flight using airplane "+ flight.getAirplane().getSerialNum() + " airliner " + airliner.getNameOfcompany() + "\t:" + totalOfpFlight);
+                        }
+                }
+                
+                
+                
 		
 	}
 
