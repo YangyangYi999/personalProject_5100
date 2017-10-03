@@ -12,21 +12,26 @@ import java.util.Date;
  * @author yiyangyang
  */
 public class Account {
-    private String rountNumber;
+    private String routingNumber;
     private String accountNumber;
     private String bankName;
     private int balance;
-    private Date createdOn;
+    private Date createOn;
 
-    public Account(){
-        this.createdOn=new Date();
-    }
-    public String getRountNumber() {
-        return rountNumber;
+    public Account() {
+        this.createOn = new Date();
     }
 
-    public void setRountNumber(String rountNumber) {
-        this.rountNumber = rountNumber;
+    public Date getCreateOn() {
+        return createOn;
+    }
+    
+    public String getRoutingNumber() {
+        return routingNumber;
+    }
+
+    public void setRoutingNumber(String routingNumber) {
+        this.routingNumber = routingNumber;
     }
 
     public String getAccountNumber() {
@@ -52,10 +57,7 @@ public class Account {
     public void setBalance(int balance) {
         this.balance = balance;
     }
-
-     @Override
     public String toString(){
-        return bankName;  
+        return this.bankName;
     }
-
 }
