@@ -1,0 +1,20 @@
+1,1995,Available,123456,150,22222,Boeing,Expired,Logan,NYC,QATAR
+2,2000,Available,123333,150,11111,apless,Not expired,Baiyun,Beijing,China
+3,1995,Not available,222345,150,33333,Boeing,Expired,Pudong,Tokyo,American
+4,1992,Not available,102030,150,44444,ABS,Not expired,Shuangliu,Shanghai,Hainan
+5,1993,Available,987654,150,55555,ABS,Not expired,Logan,NYC,QATAR
+6,1994,Not available,876543,150,66666,Boeing,Expired,Baiyun,Beijing,QATAR
+7,1995,Available,765432,150,77777,ABS,Not expired,Pudong,Tokyo,China
+8,1996,Not available,654321,150,88888,ABS,Not expired,Shuangliu,Shanghai,American
+9,1997,Available,543210,150,99999,Boeing,Expired,Logan,NYC,Sichuan
+10,1998,Not available,432099,150,111110,ABS,Not expired,Baiyun,Beijing,QATAR
+11,2000,Not Available,123496,150,12345,ABS,Expired,Logan,Tokyo,Hainan
+12,2001,Available,123883,150,23456,Boeing,Not expired,Baiyun,Shanghai,China
+13,2002,available,225345,150,34567,Boeing,Expired,Pudong,NYC,Ameican
+14,2003,Not available,102430,150,45678,ABS,Not expired,Shuangliu,Beijing,Sichuan
+15,2004,Available,987054,150,56789,Boeing,Not expired,Logan,Tokyo,QATAR
+16,2005,Not available,875543,150,67900,Boeing,Expired,Baiyun,Shanghai,American
+17,2006,Not available,765332,150,79011,ABS,Not expired,Pudong,NYC,China
+18,2007,Not available,754321,150,90122,ABS,Not expired,Shuangliu,Beijing,American
+19,2008,Available,540210,150,101233,Boeing,Expired,Logan,Tokyo,Sichuan
+20,2009,Not available,431099,150,112344,ABS,Not expired,Baiyun,Shanghai,QATAR
