@@ -99,8 +99,9 @@ public class Airplane {
 		this.airport = airport;
 	}
 
+        @Override
 	public String toString() {
-		return manufacturer;
+		return String.valueOf(serialNum);
 	}
 
 
@@ -112,5 +113,7 @@ public class Airplane {
 	public void setAirliner(Airliner airliner) {
 		this.airliner = airliner;
 	}
+        
+    
 
 }

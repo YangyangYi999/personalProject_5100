@@ -7,6 +7,9 @@ package UserInterface.manageAirliners;
 
 import Business.Airliner;
 import Business.Airliners;
+import Business.Fleet;
+import Business.FlightSchedule;
+import static UserInterface.manageCustomer.bookFlights.isInt;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -43,8 +46,6 @@ public class CreateNewAirlinerJPanel extends javax.swing.JPanel {
 
         btnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        airlinerIdTxt = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         yearTxt = new javax.swing.JTextField();
         nameTxt = new javax.swing.JTextField();
@@ -62,14 +63,6 @@ public class CreateNewAirlinerJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setText("Create a Airliner");
-
-        airlinerIdTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                airlinerIdTxtActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("Airliner ID:");
 
         jLabel3.setText("Year:");
 
@@ -116,12 +109,10 @@ public class CreateNewAirlinerJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(airlinerIdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(yearTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
@@ -135,7 +126,7 @@ public class CreateNewAirlinerJPanel extends javax.swing.JPanel {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(createAirlinerBtn)
                                         .addGap(77, 77, 77)))))))
-                .addContainerGap(294, Short.MAX_VALUE))
+                .addContainerGap(242, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,11 +135,7 @@ public class CreateNewAirlinerJPanel extends javax.swing.JPanel {
                 .addComponent(btnBack)
                 .addGap(39, 39, 39)
                 .addComponent(jLabel1)
-                .addGap(63, 63, 63)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(airlinerIdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(yearTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -162,7 +149,7 @@ public class CreateNewAirlinerJPanel extends javax.swing.JPanel {
                     .addComponent(websiteTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addComponent(createAirlinerBtn)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -178,10 +165,6 @@ public class CreateNewAirlinerJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void airlinerIdTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_airlinerIdTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_airlinerIdTxtActionPerformed
-
     private void yearTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_yearTxtActionPerformed
@@ -196,29 +179,37 @@ public class CreateNewAirlinerJPanel extends javax.swing.JPanel {
 
     private void createAirlinerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAirlinerBtnActionPerformed
         // TODO add your handling code here:
-        String AirlinerID=airlinerIdTxt.getText();
+        boolean isValid = true;
         String year=yearTxt.getText();
         String Name=nameTxt.getText();
         String website=websiteTxt.getText();
-        
-        Airliner airliner=airlinerdirectory.addAirliner();
-        airliner.setId(AirlinerID);
-        airliner.setNameOfcompany(Name);
-        airliner.setWebsite(website);
-        airliner.setYear(year);
-        
-        JOptionPane.showMessageDialog(null,"Account successfully created!");
-        
-                
+        if("".equals(year)||"".equals(Name)||"".equals(website)){
+            JOptionPane.showMessageDialog(null,"Please finish all fields");
+        }
+        else{
+            if(isInt(year)==isValid){
+                Airliner airliner=airlinerdirectory.addAirliner();
+                airliner.setId(String.valueOf(airlinerdirectory.getAirliners().size()));
+                airliner.setNameOfcompany(Name);
+                airliner.setWebsite(website);
+                airliner.setYear(year);
+                FlightSchedule flightSchedule = new FlightSchedule();
+                airliner.setFlightSchedule(flightSchedule);
+                Fleet fleet = new Fleet();
+                airliner.setFleet(fleet);
+                JOptionPane.showMessageDialog(null,"Account successfully created!");
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Field Year should be numbers");
+            }
+        }
     }//GEN-LAST:event_createAirlinerBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField airlinerIdTxt;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton createAirlinerBtn;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

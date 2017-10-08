@@ -14,15 +14,7 @@ import java.util.ArrayList;
 public class Airliners {
 	
 	private ArrayList<Airliner> airliners;
-	private FlightSchedule flightScheduel;
-
-	public FlightSchedule getFlightScheduel() {
-		return flightScheduel;
-	}
-
-	public void setFlightScheduel(FlightSchedule flightScheduel) {
-		this.flightScheduel = flightScheduel;
-	}
+	
 
 	public Airliners() {
 		airliners = new ArrayList<Airliner>();

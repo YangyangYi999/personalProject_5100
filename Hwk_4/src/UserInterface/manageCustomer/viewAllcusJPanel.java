@@ -41,7 +41,7 @@ public class viewAllcusJPanel extends javax.swing.JPanel {
                     Object[] row =new Object[6];
                     row[0]=customer;
                     row[1]=customer.getAge();
-                    row[2]="ROW" + rowNum+ "Column" + colNum;
+                    row[2]="Row \t" + rowNum+ " Column \t" + colNum;
                     row[3]=customer.getSeat().getPrice();
                     row[4]=customer.getFlightID();
                     row[5]=customer.getId();
