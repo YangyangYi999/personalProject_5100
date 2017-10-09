@@ -24,7 +24,7 @@
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="167" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="188" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -83,9 +83,9 @@
                       <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnSave" min="-2" pref="79" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                      <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSave" min="-2" pref="96" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                      <Component id="btnUpdate" min="-2" pref="98" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="208" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -97,12 +97,12 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="deleteBtn" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="380" max="32767" attributes="0"/>
+                              <EmptySpace pref="401" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="viewAirplaneBtn" min="-2" pref="166" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="viewAirplaneBtn" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="newAirplaneBtn" min="-2" pref="136" max="-2" attributes="0"/>
+                              <Component id="newAirplaneBtn" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -129,10 +129,10 @@
               <Component id="deleteBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="viewAirplaneBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="newAirplaneBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="viewAirplaneBtn" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="newAirplaneBtn" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="32" max="32767" attributes="0"/>
+              <EmptySpace type="separate" pref="43" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
                   <Component id="yearTxt" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -170,11 +170,11 @@
                   <Component id="NExpiredRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnSave" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnUpdate" alignment="0" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnUpdate" pref="45" max="32767" attributes="0"/>
+                  <Component id="btnSave" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
