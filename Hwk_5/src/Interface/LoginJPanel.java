@@ -29,7 +29,7 @@ public class LoginJPanel extends javax.swing.JPanel {
     private userAccountDirectory uad;
     private personDirectory pd;
     
-    LoginJPanel(JPanel CardSequenceJPanel, personDirectory pd, userAccountDirectory uad) {
+    public LoginJPanel(JPanel CardSequenceJPanel, personDirectory pd, userAccountDirectory uad) {
         initComponents();  
         this.CardSequenceJPanel = CardSequenceJPanel;
         this.uad = uad;   
@@ -123,24 +123,26 @@ public class LoginJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
             String name = NameTxt.getText();
             
-            String pwd = String.valueOf(PwdTxt.getPassword());
-            
-            UserAccount userAccount = uad.isValidUser(name,pwd);
-            if(userAccount.getRole().equals("Admin")){
-                systemAdminWorkAreaJPanel panel =new systemAdminWorkAreaJPanel(CardSequenceJPanel,userAccount,uad,pd);
-                CardSequenceJPanel.add("systemAdminWorkAreaJPanel",panel);
-                CardLayout layout=(CardLayout)CardSequenceJPanel.getLayout();
-                layout.next(CardSequenceJPanel);
+            String pwd = String.valueOf(String.valueOf(PwdTxt.getPassword()).hashCode());
+            if(uad.isValidUser(name,pwd)!=null){
+                UserAccount userAccount = uad.isValidUser(name,pwd);
+                if(userAccount.getRole().equals("Admin")){
+                    systemAdminWorkAreaJPanel panel =new systemAdminWorkAreaJPanel(CardSequenceJPanel,userAccount,uad,pd);
+                    CardSequenceJPanel.add("systemAdminWorkAreaJPanel",panel);
+                    CardLayout layout=(CardLayout)CardSequenceJPanel.getLayout();
+                    layout.next(CardSequenceJPanel);
+                }
+                else if(userAccount.getRole().equals("HR")){
+                    UserWorkAreaJPanel panel =new UserWorkAreaJPanel(CardSequenceJPanel,pd,userAccount,uad);
+                    CardSequenceJPanel.add("UserWorkAreaJPanel",panel);
+                    CardLayout layout=(CardLayout)CardSequenceJPanel.getLayout();
+                    layout.next(CardSequenceJPanel);
+                }
             }
-            else if(userAccount.getRole().equals("HR")){
-                UserWorkAreaJPanel panel =new UserWorkAreaJPanel(CardSequenceJPanel,pd,userAccount,uad);
-                CardSequenceJPanel.add("UserWorkAreaJPanel",panel);
-                CardLayout layout=(CardLayout)CardSequenceJPanel.getLayout();
-                layout.next(CardSequenceJPanel);
-            }
-            else{
+            else {
                 JOptionPane.showMessageDialog(null,"Username and password does not match","Warning",JOptionPane.WARNING_MESSAGE);
             }
+           
         
     }//GEN-LAST:event_loginBtnActionPerformed
 

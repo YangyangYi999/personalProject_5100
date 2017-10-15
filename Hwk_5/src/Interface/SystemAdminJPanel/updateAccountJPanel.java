@@ -53,7 +53,6 @@ public class updateAccountJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         roleComboBox = new javax.swing.JComboBox<>();
-        pwdTxt = new javax.swing.JTextField();
         NameTxt = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         personComboBox = new javax.swing.JComboBox();
@@ -63,6 +62,7 @@ public class updateAccountJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
+        pwdTxt = new javax.swing.JPasswordField();
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -76,8 +76,6 @@ public class updateAccountJPanel extends javax.swing.JPanel {
 
         roleComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HR", "Admin" }));
         roleComboBox.setEnabled(false);
-
-        pwdTxt.setEnabled(false);
 
         NameTxt.setEnabled(false);
 
@@ -117,6 +115,8 @@ public class updateAccountJPanel extends javax.swing.JPanel {
             }
         });
 
+        pwdTxt.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -142,16 +142,17 @@ public class updateAccountJPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel2))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(roleComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(pwdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(NameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(personComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(activeRB)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(disabledRB)))))))
-                .addContainerGap(197, Short.MAX_VALUE))
+                                        .addComponent(disabledRB))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(pwdTxt, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(roleComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(NameTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                                        .addComponent(personComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(123, 123, 123)))))
+                .addContainerGap(74, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -226,14 +227,14 @@ public class updateAccountJPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        if("".equals(NameTxt.getText())|| "".equals(pwdTxt.getText())){
+        if("".equals(NameTxt.getText())|| "".equals(String.valueOf(pwdTxt.getPassword()))){
             JOptionPane.showMessageDialog(null,"Please fill in all fields");
         }
         else{
 
             userAccount.setUserName(NameTxt.getText());
-            userAccount.setPassword(pwdTxt.getText());
-            userAccount.setRole(String.valueOf(roleComboBox.getSelectedIndex()));
+            userAccount.setPassword(String.valueOf((String.valueOf(pwdTxt.getPassword())).hashCode()));
+            userAccount.setRole(String.valueOf(roleComboBox.getSelectedItem()));
             String status = "";
             Boolean isClick = true;
             if (activeRB.isSelected() == isClick)
@@ -245,6 +246,7 @@ public class updateAccountJPanel extends javax.swing.JPanel {
                status = disabledRB.getText();
             }
             userAccount.setStatus(status);
+            userAccount.setPerson((Person)personComboBox.getSelectedItem());
             btnSave.setEnabled(false);
             btnUpdate.setEnabled(true);
             JOptionPane.showMessageDialog(null,"Account successfully updated!");
@@ -280,7 +282,7 @@ public class updateAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JComboBox personComboBox;
-    private javax.swing.JTextField pwdTxt;
+    private javax.swing.JPasswordField pwdTxt;
     private javax.swing.JComboBox<String> roleComboBox;
     // End of variables declaration//GEN-END:variables
 }

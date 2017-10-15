@@ -163,7 +163,7 @@ public class UserWorkAreaJPanel extends javax.swing.JPanel {
 
     private void mngPdBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mngPdBtnActionPerformed
         // TODO add your handling code here:
-            ManagePersonJPanel panel =new ManagePersonJPanel(CardSequenceJPanel,pd,uad);
+            ManagePersonJPanel panel =new ManagePersonJPanel(CardSequenceJPanel,pd,uad,userAccount);
             CardSequenceJPanel.add("ManagePersonJPanel",panel);
             CardLayout layout=(CardLayout)CardSequenceJPanel.getLayout();
             layout.next(CardSequenceJPanel);

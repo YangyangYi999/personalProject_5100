@@ -33,9 +33,10 @@ public class ConfigureABusiness {
         Person p2 = pd.findPersonByLastName("Brown");
         if (p2!=null){
             UserAccount ua = uad.addUserAccount();
+            String pw = "pw";
             ua.setPerson(p2); //link user account to the Mr. Brown
             ua.setUserName("jadam");
-            ua.setPassword("pw"); 
+            ua.setPassword(String.valueOf(pw.hashCode())); 
             ua.setRole("Admin");
             ua.setStatus("Active");
             

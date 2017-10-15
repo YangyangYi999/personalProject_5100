@@ -36,8 +36,6 @@ public class newUserAccountJPanel extends javax.swing.JPanel {
         {
             personComboBox.addItem(person);
         }   
-        
-    
     }
 
     /**
@@ -57,13 +55,13 @@ public class newUserAccountJPanel extends javax.swing.JPanel {
         personComboBox = new javax.swing.JComboBox();
         roleComboBox = new javax.swing.JComboBox<>();
         createBtn = new javax.swing.JButton();
-        pwdTxt = new javax.swing.JTextField();
         usernameTxt = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         disabledRB = new javax.swing.JRadioButton();
         activeRB = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
+        pwdTxt = new javax.swing.JPasswordField();
 
         jLabel1.setText("Select Person:");
 
@@ -119,8 +117,8 @@ public class newUserAccountJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(personComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(roleComboBox, 0, 141, Short.MAX_VALUE)
-                            .addComponent(pwdTxt)
-                            .addComponent(usernameTxt)))
+                            .addComponent(usernameTxt)
+                            .addComponent(pwdTxt)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -187,7 +185,7 @@ public class newUserAccountJPanel extends javax.swing.JPanel {
         
         UserAccount ua = uad.addUserAccount();
         ua.setUserName(usernameTxt.getText());
-        ua.setPassword(pwdTxt.getText());
+        ua.setPassword(String.valueOf((String.valueOf(pwdTxt.getPassword())).hashCode()));
         String status = "";
             Boolean isClick = true;
             if (activeRB.isSelected() == isClick)
@@ -200,7 +198,8 @@ public class newUserAccountJPanel extends javax.swing.JPanel {
             }
         ua.setStatus(status);
         ua.setRole((String) roleComboBox.getSelectedItem());
-        ua.setPerson((Person) personComboBox.getSelectedItem());
+        
+        ua.setPerson((Person)personComboBox.getSelectedItem());
         JOptionPane.showMessageDialog(null,"Create user account successful");
 
     }//GEN-LAST:event_createBtnActionPerformed
@@ -219,7 +218,7 @@ public class newUserAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JComboBox personComboBox;
-    private javax.swing.JTextField pwdTxt;
+    private javax.swing.JPasswordField pwdTxt;
     private javax.swing.JComboBox<String> roleComboBox;
     private javax.swing.JTextField usernameTxt;
     // End of variables declaration//GEN-END:variables

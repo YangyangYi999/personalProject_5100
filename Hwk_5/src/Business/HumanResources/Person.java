@@ -29,7 +29,7 @@ public class Person {
         this.lastName = lastName;
     }
     public String toString(){
-        return getFirstName() + " " +getLastName();
+        return getFirstName() + " " + getLastName();
     }
     
 }

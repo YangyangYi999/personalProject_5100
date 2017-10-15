@@ -9,6 +9,7 @@ import Business.HumanResources.Person;
 import Business.SystemAdministration.UserAccount;
 import Business.HumanResources.personDirectory;
 import Business.SystemAdministration.userAccountDirectory;
+import Interface.LoginJPanel;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -26,18 +27,17 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
    private JPanel CardSequenceJPanel;
    private personDirectory pd;
    private userAccountDirectory uad;
+   private UserAccount userAccount;
  
-    
+
     
 
-   
-
-    ManagePersonJPanel(JPanel CardSequenceJPanel, personDirectory pd, userAccountDirectory uad) {
+    ManagePersonJPanel(JPanel CardSequenceJPanel, personDirectory pd, userAccountDirectory uad, UserAccount userAccount) {
         initComponents();
         this.CardSequenceJPanel = CardSequenceJPanel;
         this.pd = pd;      
         this.uad = uad;
-
+        this.userAccount = userAccount;
         populateTable();    
     }
 
@@ -59,6 +59,7 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
         btnBack2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         lastNameTxt = new javax.swing.JTextField();
+        deleteBtn = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -69,7 +70,7 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "First Name", "Last Name", "User Name"
+                "Name", "First Name", "Last Name", "User Name"
             }
         ));
         jScrollPane1.setViewportView(personTbl);
@@ -104,6 +105,13 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
 
         jLabel3.setText("Last Name:");
 
+        deleteBtn.setText("Delete");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,7 +136,9 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(143, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(deleteBtn)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(122, 122, 122))
         );
         layout.setVerticalGroup(
@@ -140,7 +150,9 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addGap(18, 18, 18)
+                .addComponent(deleteBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lastNameTxt)
@@ -159,14 +171,15 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
 
         for(Person p: pd.getPerson()){
            
-                    Object[] row =new Object[3];
+                    Object[] row =new Object[4];
                     row[0]=p;
-                    row[1]=p.getLastName();
+                    row[1]=p.getFirstName();
+                    row[2]=p.getLastName();
                     if(getUsernameByUserAccount(p) == null){
-                        row[2] = "No User Account";
+                        row[3] = "No User Account";
                     }
                     else{
-                        row[2] = getUsernameByUserAccount(p).getUserName();
+                        row[3] = getUsernameByUserAccount(p).getUserName();
                     }
                     
                     dtm.addRow(row);
@@ -240,9 +253,42 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_updatePersonBtnActionPerformed
 
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        // TODO add your handling code here:
+        int selectedRow=personTbl.getSelectedRow();
+        if(selectedRow>=0){
+            int dialogButton=JOptionPane.YES_NO_OPTION;
+            int dialogResult=JOptionPane.showConfirmDialog(null,"Would you like to delete the account details?","Warning",dialogButton);
+            if(dialogResult==JOptionPane.YES_OPTION){
+                Person person=(Person)personTbl.getValueAt(selectedRow, 0);
+                pd.deletePerson(person);
+                for(UserAccount ua:uad.getUserAccount())
+                {
+                    if(ua.getPerson() == person){
+                        uad.deleteUserAccount(ua);
+                    }
+                }
+                populateTable();
+                if(person == userAccount.getPerson()){
+                    LoginJPanel panel =new LoginJPanel(CardSequenceJPanel,pd,uad);
+                    CardSequenceJPanel.add("LoginJPanel",panel);
+                    CardLayout layout=(CardLayout)CardSequenceJPanel.getLayout();
+                    layout.next(CardSequenceJPanel);
+                }
+                
+
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Please select a row from table first","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+
+    }//GEN-LAST:event_deleteBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack2;
+    private javax.swing.JButton deleteBtn;
     private javax.swing.JButton findPersonBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
