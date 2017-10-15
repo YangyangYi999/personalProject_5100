@@ -126,6 +126,10 @@ public class NewPersonJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+         if("".equals(FnameTxt.getText())|| "".equals(LnameTxt.getText())){
+            JOptionPane.showMessageDialog(null,"Please fill in all fields");
+        }
+        else{
         Person p = pd.addPerson();
         p.setLastName(LnameTxt.getText());
         p.setFirstName(FnameTxt.getText());
@@ -134,6 +138,7 @@ public class NewPersonJPanel extends javax.swing.JPanel {
         
         LnameTxt.setText("");
         FnameTxt.setText("");
+         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

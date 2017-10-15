@@ -182,12 +182,8 @@ public class newUserAccountJPanel extends javax.swing.JPanel {
 
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
         // TODO add your handling code here:
-        
-        UserAccount ua = uad.addUserAccount();
-        ua.setUserName(usernameTxt.getText());
-        ua.setPassword(String.valueOf((String.valueOf(pwdTxt.getPassword())).hashCode()));
         String status = "";
-            Boolean isClick = true;
+        Boolean isClick = true;
             if (activeRB.isSelected() == isClick)
             {
                status = activeRB.getText();
@@ -196,12 +192,19 @@ public class newUserAccountJPanel extends javax.swing.JPanel {
             {
                status = disabledRB.getText();
             }
-        ua.setStatus(status);
-        ua.setRole((String) roleComboBox.getSelectedItem());
-        
-        ua.setPerson((Person)personComboBox.getSelectedItem());
-        JOptionPane.showMessageDialog(null,"Create user account successful");
+        if(usernameTxt.getText().equals("")|| pwdTxt.getPassword().equals("")||status.equals("")){
+            JOptionPane.showMessageDialog(null,"Please complete all fields");
+        }
+        else{
+            UserAccount ua = uad.addUserAccount();
+            ua.setUserName(usernameTxt.getText());
+            ua.setPassword(String.valueOf((String.valueOf(pwdTxt.getPassword())).hashCode()));
+            ua.setStatus(status);
+            ua.setRole((String) roleComboBox.getSelectedItem());
 
+            ua.setPerson((Person)personComboBox.getSelectedItem());
+            JOptionPane.showMessageDialog(null,"Create user account successful");
+        }
     }//GEN-LAST:event_createBtnActionPerformed
 
 

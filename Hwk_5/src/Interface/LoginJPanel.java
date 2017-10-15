@@ -122,9 +122,11 @@ public class LoginJPanel extends javax.swing.JPanel {
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
             String name = NameTxt.getText();
-            
             String pwd = String.valueOf(String.valueOf(PwdTxt.getPassword()).hashCode());
-            if(uad.isValidUser(name,pwd)!=null){
+            if(name.equals("")||pwd.equals("")){
+                JOptionPane.showMessageDialog(null,"Please complete all the fields","Warning",JOptionPane.WARNING_MESSAGE);
+            }
+            else if(uad.isValidUser(name,pwd)!=null){
                 UserAccount userAccount = uad.isValidUser(name,pwd);
                 if(userAccount.getRole().equals("Admin")){
                     systemAdminWorkAreaJPanel panel =new systemAdminWorkAreaJPanel(CardSequenceJPanel,userAccount,uad,pd);

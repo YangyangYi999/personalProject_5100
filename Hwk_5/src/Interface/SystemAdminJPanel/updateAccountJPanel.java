@@ -227,14 +227,6 @@ public class updateAccountJPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        if("".equals(NameTxt.getText())|| "".equals(String.valueOf(pwdTxt.getPassword()))){
-            JOptionPane.showMessageDialog(null,"Please fill in all fields");
-        }
-        else{
-
-            userAccount.setUserName(NameTxt.getText());
-            userAccount.setPassword(String.valueOf((String.valueOf(pwdTxt.getPassword())).hashCode()));
-            userAccount.setRole(String.valueOf(roleComboBox.getSelectedItem()));
             String status = "";
             Boolean isClick = true;
             if (activeRB.isSelected() == isClick)
@@ -245,6 +237,14 @@ public class updateAccountJPanel extends javax.swing.JPanel {
             {
                status = disabledRB.getText();
             }
+        if("".equals(NameTxt.getText())|| "".equals(String.valueOf(pwdTxt.getPassword()))||status.equals("")){
+            JOptionPane.showMessageDialog(null,"Please complete all fields");
+        }
+        else{
+
+            userAccount.setUserName(NameTxt.getText());
+            userAccount.setPassword(String.valueOf((String.valueOf(pwdTxt.getPassword())).hashCode()));
+            userAccount.setRole(String.valueOf(roleComboBox.getSelectedItem()));
             userAccount.setStatus(status);
             userAccount.setPerson((Person)personComboBox.getSelectedItem());
             btnSave.setEnabled(false);
