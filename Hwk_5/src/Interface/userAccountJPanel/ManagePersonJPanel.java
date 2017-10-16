@@ -262,10 +262,10 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
             if(dialogResult==JOptionPane.YES_OPTION){
                 Person person=(Person)personTbl.getValueAt(selectedRow, 0);
                 pd.deletePerson(person);
-                for(UserAccount ua:uad.getUserAccount())
+                for(int i = (uad.getUserAccount().size() - 1); i >= 0; i--)
                 {
-                    if(ua.getPerson() == person){
-                        uad.deleteUserAccount(ua);
+                    if(uad.getUserAccount().get(i).getPerson() == person){
+                        uad.deleteUserAccount(uad.getUserAccount().get(i));
                     }
                 }
                 populateTable();
