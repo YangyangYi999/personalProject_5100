@@ -6,6 +6,7 @@ package userinterface.CDCRole;
 
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
+import Business.Organization.ProviderOrganization;
 import Business.Person.Person;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
@@ -250,11 +251,16 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         String userName = nameJTextField.getText();
         String password = passwordJTextField.getText();
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
+        
         Person employee = (Person) employeeJComboBox.getSelectedItem();
         Role role = (Role) roleJComboBox.getSelectedItem();
-        
-        organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
-        
+        if(organization instanceof ProviderOrganization){
+            ProviderOrganization org = (ProviderOrganization)organization;
+            org.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+        }
+        else{
+            organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+        }
         popData();
     }//GEN-LAST:event_createUserJButtonActionPerformed
 
